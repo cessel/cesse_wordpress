@@ -107,7 +107,7 @@ gulp.task('img',function()
     });
 
 //gulp.task('watch',['bsync','scripts','sass'],function()
-gulp.task('watch',['bsync','sass'],function()
+gulp.task('default',['bsync','sass'],function()
     {
         gulp.watch('sass/**/*.+(sass|scss)',['sass']);
         gulp.watch('**/*.php',bsync.reload);
