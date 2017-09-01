@@ -13,7 +13,7 @@
     "wpackagist-plugin/wordfence": "*",
     "wpackagist-plugin/wp-lightbox-2": "*",
     "wpackagist-plugin/akismet": "*",
-    "wpackagist-plugin/contact-form-7": "4.7"
+    "wpackagist-plugin/contact-form-7": "*"
   },
   "extra": {
     "wordpress-install-dir": "/",
