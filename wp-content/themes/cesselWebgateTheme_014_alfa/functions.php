@@ -5,64 +5,6 @@
 
 define('CES_IMG',get_template_directory_uri()."/img");
 
-remove_action( 'wp_head',             'wp_enqueue_scripts');
-remove_action( 'wp_head',             'feed_links');
-remove_action( 'wp_head',             'feed_links_extra');
-remove_action( 'wp_head',             'rsd_link');
-remove_action( 'wp_head',             'wlwmanifest_link');
-remove_action( 'wp_head',             'adjacent_posts_rel_link_wp_head');
-remove_action( 'wp_head',             'locale_stylesheet');
-remove_action( 'wp_head',             'noindex');
-//remove_action( 'wp_head','wp_print_styles');
-//remove_action( 'wp_head',             'wp_print_head_scripts');
-remove_action( 'wp_head',             'wp_generator');
-remove_action( 'wp_head',             'rel_canonical');
-//remove_action( 'wp_footer',           'wp_print_footer_scripts' );
-remove_action( 'wp_head',             'wp_shortlink_wp_head');
-remove_action( 'template_redirect',   'wp_shortlink_header');
-//remove_action( 'wp_print_footer_scripts', '_wp_footer_scripts');
-
-
-
-/* Скрываем следы WP в заголовках */
-remove_action('wp_head', 'rsd_link');
-remove_action('wp_head', 'wp_generator');
-remove_action('wp_head', 'feed_links', 2);
-remove_action('wp_head', 'index_rel_link');
-remove_action('wp_head', 'wlwmanifest_link');
-remove_action('wp_head', 'feed_links_extra', 3);
-remove_action('wp_head', 'start_post_rel_link', 10, 0);
-remove_action('wp_head', 'parent_post_rel_link', 10, 0);
-remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
-
-function remove_x_pingback($headers) { unset($headers['X-Pingback']); return $headers; } add_filter('wp_headers', 'remove_x_pingback');
-
-// Отключаем сам REST API
-add_filter('rest_enabled', '__return_false');
-
-// Отключаем фильтры REST API
-remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
-remove_action( 'wp_head', 'rest_output_link_wp_head', 10, 0 );
-remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
-remove_action( 'auth_cookie_malformed', 'rest_cookie_collect_status' );
-remove_action( 'auth_cookie_expired', 'rest_cookie_collect_status' );
-remove_action( 'auth_cookie_bad_username', 'rest_cookie_collect_status' );
-remove_action( 'auth_cookie_bad_hash', 'rest_cookie_collect_status' );
-remove_action( 'auth_cookie_valid', 'rest_cookie_collect_status' );
-remove_filter( 'rest_authentication_errors', 'rest_cookie_check_errors', 100 );
-
-// Отключаем события REST API
-remove_action( 'init', 'rest_api_init' );
-remove_action( 'rest_api_init', 'rest_api_default_filters', 10, 1 );
-remove_action( 'parse_request', 'rest_api_loaded' );
-
-// Отключаем Embeds связанные с REST API
-remove_action( 'rest_api_init', 'wp_oembed_register_route' );
-remove_filter( 'rest_pre_serve_request', '_oembed_rest_pre_serve_request', 10, 4 );
-
-
-
-
 /* АВТОМАТИЧЕСКОЕ ПОДКЛЮЧЕНИЕ JS И CSS ФАЙЛОВ ИЗ ПАПКИ /js/ и /css/ СООТВЕТСТВЕННО */
 
 function CWG_scripts()
