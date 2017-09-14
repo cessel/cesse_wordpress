@@ -32,7 +32,7 @@ $more_lg: 1440px;
         font-size:1.2em;
         text-decoration: none !important;
 }
-@mixin coord($t,$b,$l,$r)
+@mixin coord($t,$r,$b,$l)
 {
     top:$t;
     bottom:$b;
